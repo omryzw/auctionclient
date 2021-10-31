@@ -1,3 +1,4 @@
+import { DataService } from './../../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductListComponent implements OnInit {
 
-  constructor() { }
+  allProducts : any= [];
+
+  constructor(private data : DataService) { }
 
   ngOnInit(): void {
+    this.getAllProducts();
+  }
+
+  getAllProducts(): void {
+    this.data.getAllProducts().subscribe(
+      (data: any) => {
+        this.allProducts = data.content;
+        console.log(this.allProducts);
+      }
+    );
   }
 
 }

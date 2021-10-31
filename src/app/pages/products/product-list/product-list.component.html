@@ -1,52 +1,17 @@
-<div class="container-fluid page-body-wrapper">
-    <!-- <app-sidebar ></app-sidebar> -->
 
-
-  
-    
-  
-    <div class=" offset-2">
-
-        <!-- <div class="card">
-  
-      <div class="card-header">
-  
-        Featured
-  
+<div class=" row g-3 offset-1">
+    <div class="col" *ngFor="let product of allProducts">
+    <div class="card " style="width: 18rem;">
+        <img class="card-img-top" [src]="product.photoUrl" alt="Card image cap" style="height: 13rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{product.title}}</h5>
+          <p class="card-text">{{product.description || 'Description By Pictures'}}</p>
+          <p class="card-text-2" style="font-size: 12px; color: #999999;">Current Bid : {{product.currentBid.amount || 0 | currency}}</p>
+          <button class="btn btn-bid">Place Bid</button>
+        </div>
       </div>
-  
-      <div class="card-body">
-  
-        <h5 class="card-title">Special title treatment</h5>
-  
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-  
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-  
-      </div>
-  
     </div>
-</div> -->
+  </div>
 
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-    <div class="col">
-        aa
-    </div>
-    <div class="col">
-        aa
-    </div><div class="col">
-        aa
-    </div><div class="col">
-        aa
-    </div><div class="col">
-        aa
-    </div><div class="col">
-        aa
-    </div><div class="col">
-        aa
-    </div><div class="col">
-        aa
-    </div>
-</div>
-  
-</div>
+
+ 
