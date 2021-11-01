@@ -12,8 +12,8 @@
         <div class="form-group">
           <select class="form-select" id="exampleFormControlSelkect1">
             <option value="s">By Name</option>
-            <option value="ss">By Date</option>
-            <option value="sss">By Size</option>
+            <option value="ss">Highest to Lowest Bid</option>
+            <option value="sss">Lowest to Highest Bid</option>
           </select>
         </div>
       </li>
@@ -53,7 +53,7 @@
           <div class="card-body">
             <h5 class="card-title">{{product.title}}</h5>
             <p class="card-text">{{product.description || 'Description By Pictures'}}</p>
-            <p class="card-text-2">Current Bid : {{product.currentBid.amount || 0 | currency}}</p>
+            <p class="card-text-2">Current Bid : <b>{{product.currentBid.amount || 0 | currency}}</b></p>
             <button class="btn btn-bid">Place Bid</button>
           </div>
         </div>
