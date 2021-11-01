@@ -11,6 +11,7 @@ import { SidebarComponent } from './pages/layouts/sidebar/sidebar.component';
 import { ProductListComponent } from './pages/products/product-list/product-list.component';
 import { ProductSingleComponent } from './pages/products/product-single/product-single.component';
 import { AutobidComponent } from './pages/bids/autobid/autobid.component';
+import { LoginComponent } from './pages/layouts/login/login.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { AutobidComponent } from './pages/bids/autobid/autobid.component';
     ProductListComponent,
     ProductSingleComponent,
     AutobidComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
