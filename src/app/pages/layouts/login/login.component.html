@@ -1,4 +1,7 @@
 
+    <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-newton-cradle" [fullScreen]="true">
+      <p style="color: white">Loading...</p>
+    </ngx-spinner>
     <div id="content" style="margin-left:-10%">
 <section class="vh-100">
     <div class="container-fluid h-custom">
@@ -12,19 +15,22 @@
             <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
               <p class="lead fw-normal mb-3 me-3">Sign in | Scopic Auction</p>
             </div>
+            <div class="alert alert-danger" role="alert" *ngIf="isLoginFail">
+              Incorrect Credentials , Please Try again
+            </div>
             <!-- Email input -->
             <div class="form-outline mb-4">
               <input type="email" id="form3Example3" class="form-control form-control-lg"
-                placeholder="Enter a valid email address" />
+                placeholder="Enter a valid email address" [(ngModel)]="email" name="email"/>
             </div>
             <!-- Password input -->
             <div class="form-outline mb-3">
               <input type="password" id="form3Example4" class="form-control form-control-lg"
-                placeholder="Enter password" />
+                placeholder="Enter password" [(ngModel)]="password" name="password"/>
             </div>
             <div class="text-center text-lg-start mt-4 pt-2">
               <button type="button" class="btn btn-login btn-lg"
-                style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+                style="padding-left: 2.5rem; padding-right: 2.5rem;" [disabled]="password === '' || email === ''" (click)="login()">Login</button>
             </div>
           </form>
         </div>
