@@ -10,10 +10,10 @@
       <li>
         <p>Arrange</p>
         <div class="form-group">
-          <select class="form-select" id="exampleFormControlSelkect1">
-            <option value="s">By Name</option>
-            <option value="ss">Highest to Lowest Bid</option>
-            <option value="sss">Lowest to Highest Bid</option>
+          <select class="form-select" id="exampleFormControlSelkect1" (change)="orderProductsByFilter($event.target)">
+            <option value="name">By Name</option>
+            <option value="desc">Highest to Lowest Bid</option>
+            <option value="asc">Lowest to Highest Bid</option>
           </select>
         </div>
       </li>
