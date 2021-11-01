@@ -1,63 +1,61 @@
 <div id="container">
-    <nav>
-        <ul>
-          <li>
-            Filters
-          </li>
-          <li>
-            <p>Arrange</p>
-            <div class="form-group">
-              <select class="form-select" id="exampleFormControlSelkect1">
-                <option value="s">By Name</option>
-                <option value="ss">By Date</option>
-                <option value="sss">By Size</option>
-              </select>
-            </div>
-          </li>
-          <li>
-            <p>
-              <label for="volume">Minimum Bid</label>
-              <input type="range" id="volume" name="volume" min="0" max="11">
-            </p>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            Categories
-          </li>
-          <li>
-            Category 1
-          </li>
-          <li>
-            Category 2
-          </li>
-          <li>
-            Category 3
-          </li>
-          <li>
-            Category 4
-          </li>
-          <li>
-            Category 5
-          </li>
-        </ul>
-      </nav>
-      
-
-<div id="content">
-<div class=" row g-3 offset-1">
-    <div class="col" *ngFor="let product of allProducts">
-    <div class="card " style="width: 18rem;">
-        <img class="card-img-top" [src]="product.photoUrl" alt="Card image cap" style="height: 13rem;">
-        <div class="card-body">
-          <h5 class="card-title">{{product.title}}</h5>
-          <p class="card-text">{{product.description || 'Description By Pictures'}}</p>
-          <p class="card-text-2">Current Bid : {{product.currentBid.amount || 0 | currency}}</p>
-          <button class="btn btn-bid">Place Bid</button>
+  <nav>
+    <ul>
+      <li>
+        Filters
+      </li>
+      <li>
+        <p>Arrange</p>
+        <div class="form-group">
+          <select class="form-select" id="exampleFormControlSelkect1">
+            <option value="s">By Name</option>
+            <option value="ss">By Date</option>
+            <option value="sss">By Size</option>
+          </select>
+        </div>
+      </li>
+      <li>
+        <p>
+          <label for="volume">Minimum Bid</label>
+          <input type="range" id="volume" name="volume" min="0" max="11">
+        </p>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        Categories
+      </li>
+      <li>
+        Category 1
+      </li>
+      <li>
+        Category 2
+      </li>
+      <li>
+        Category 3
+      </li>
+      <li>
+        Category 4
+      </li>
+      <li>
+        Category 5
+      </li>
+    </ul>
+  </nav>
+  <div id="content">
+    <div class=" row g-3 offset-1">
+      <div class="col" *ngFor="let product of allProducts">
+        <div class="card " style="width: 18rem;">
+          <img class="card-img-top" [src]="product.photoUrl" alt="Card image cap" style="height: 13rem;">
+          <div class="card-body">
+            <h5 class="card-title">{{product.title}}</h5>
+            <p class="card-text">{{product.description || 'Description By Pictures'}}</p>
+            <p class="card-text-2">Current Bid : {{product.currentBid.amount || 0 | currency}}</p>
+            <button class="btn btn-bid">Place Bid</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
 </div>
