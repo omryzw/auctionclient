@@ -18,7 +18,7 @@ There are two built in dummy users
 
 2. email : `jane@gmail.com` & password : `password2`
 
-You can also view the project online, hosted on [Here](https://scopicomry.herokuapp.com) `https://scopicomry.herokuapp.com`
+You can also view the project online, hosted on [Here](https://scopicomry.herokuapp.com) or `https://scopicomry.herokuapp.com`
 
 
 ## Build (optional)
