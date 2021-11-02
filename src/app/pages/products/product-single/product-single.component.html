@@ -1,1 +1,54 @@
-<p>product-single works!</p>
+<div class="container">
+  <div class="row mt-5" *ngIf="productDetails">
+    <div class="col">
+      <img [src]="productDetails.photoUrl" class="img-fluid" alt="Picture of Product"
+        style="width: 500px;height: 400px;">
+    </div>
+    <div class="col">
+        <div class="alert alert-primary" role="alert" *ngIf="productDetails.currentBid.user == currentBid.user">
+            You are currently winning this bid!
+          </div>
+      <h1 style="font-size:35px; color: #030234;" class="mb-5"><b>{{productDetails.title}}</b></h1>
+      <h5 style="font-size:20px;color: #030234;" class="mb-5">Minimum Bid :
+        {{productDetails.currentBid.amount + 1 |currency}}</h5>
+      <h6 style="font-size:25px;color: #030234;" class="mb-5">Details</h6>
+      <p style="font-size:20px;color: #030234;" class="mb-5">{{productDetails.description || 'No description'}} </p>
+      <!-- left and right -->
+      <div class="row">
+        <div class="col">
+          <h1 style="font-size:20px" class="mb-4">Last Bid</h1>
+          <h6 style="font-size:20px;" class="mb-5">{{productDetails.currentBid.amount  | currency}}</h6>
+        </div>
+        <div class="col mb-5">
+          <h1 style="font-size:20px" class="mb-4">Available Until</h1>
+          <h6 style="font-size:20px" class="mb-5">Ends {{productDetails.endDate | date: 'medium'}}</h6>
+        </div>
+      </div>
+      <button class="btn btn-bid" *ngIf="!showBidForm && !productDetails.autoBidders.includes(currentBid.user)" (click)="showBidForm  = true">Place a Bid</button>
+      <div *ngIf="showBidForm">
+        <p class="mt-2" style="font-size:20px">Enter any bid amount from
+          <b>{{productDetails.currentBid.amount + 1 |currency}} </b></p>
+        <input type="number" class="form-control mt-2 bidamount" min="{{productDetails.currentBid.amount + 1}}"
+          placeholder="Enter your bid" style="width: 100%;" [(ngModel)]="currentBid.amount">
+        <button class="btn btn-cancel mt-3" (click)="showBidForm  = false">Cancel</button>
+        <button class="btn btn-cancel mt-3 mx-3"  [disabled]="currentBid.amount <= productDetails.currentBid.amount" (click)="placeBid()">Place Bid</button>
+      </div>
+      <div class="mt-2 alert alert-info" role="alert" *ngIf="showAutoBidSuccess">
+        You have successfully setup autobidding for this product, Make Sure your reserved amounts are up to date!
+      </div>
+      <div class="mt-2 alert alert-info" role="alert" *ngIf="productDetails.autoBidders.includes(currentBid.user)">
+        Autobidding is set for this product!
+      </div>
+      <!-- checkbox -->
+        <div class="form-check mt-5" *ngIf="!productDetails.autoBidders.includes(currentBid.user)">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" (change)="activateAutoBid($event)" >
+            <label class="form-check-label" for="defaultCheck1">
+            Activate Auto Bidding
+            </label>
+        </div>
+  </div>
+</div>
+<div class="alert alert-danger mt-5" role="alert" *ngIf="!productDetails">
+    No Data Available for Selected Product , click <a [routerLink]="['/']">here</a> to go back to products page
+</div>
+</div>

@@ -54,7 +54,7 @@
             <h5 class="card-title">{{product.title}}</h5>
             <p class="card-text">{{product.description || 'Description By Pictures'}}</p>
             <p class="card-text-2">Current Bid : <b>{{product.currentBid.amount || 0 | currency}}</b></p>
-            <button class="btn btn-bid">Place Bid</button>
+            <button class="btn btn-bid" routerLink="/product/{{product._id}}">Place Bid</button>
           </div>
         </div>
       </div>

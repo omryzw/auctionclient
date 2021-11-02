@@ -1,3 +1,4 @@
+import { NotfoundComponent } from './pages/layouts/notfound/notfound.component';
 import { IsloggedGuard } from './guards/islogged.guard';
 import { ProductSingleComponent } from './pages/products/product-single/product-single.component';
 import { LoginComponent } from './pages/layouts/login/login.component';
@@ -15,7 +16,7 @@ const routes: Routes = [
 
   },
   {
-    path: 'product',
+    path: 'product/:id',
     component: ProductSingleComponent,
     canActivate: [IsloggedGuard],
     canLoad:[IsloggedGuard]
@@ -24,6 +25,10 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent,
   },
+  {
+    path: '**',
+    component: NotfoundComponent
+  }
 ];
 
 @NgModule({

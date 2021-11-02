@@ -1,0 +1,36 @@
+.btn-bid {
+  background: #04034d;
+  display: block;
+  color: #fff;
+  width: 100%;
+  box-shadow: none;
+  border-color: #030234;
+  text-align: center;
+  white-space: nowrap;
+  overflow: visible;
+  padding: 10px;
+  font-size: 18px;
+}
+
+img {
+  // border-radius: 10px;
+  // box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.bidamount {
+  border-color: #030234;
+  color: #04034d;
+  padding: 10px;
+  font-size: 18px;
+}
+
+
+.btn-cancel {
+  float: right;
+  padding: 10px;
+  color: #fff;
+  border-color: #030234;
+  background: #04034d;
+
+  font-size: 18px;
+}

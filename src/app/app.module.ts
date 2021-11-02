@@ -13,6 +13,7 @@ import { ProductListComponent } from './pages/products/product-list/product-list
 import { ProductSingleComponent } from './pages/products/product-single/product-single.component';
 import { AutobidComponent } from './pages/bids/autobid/autobid.component';
 import { LoginComponent } from './pages/layouts/login/login.component';
+import { NotfoundComponent } from './pages/layouts/notfound/notfound.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { LoginComponent } from './pages/layouts/login/login.component';
     ProductSingleComponent,
     AutobidComponent,
     LoginComponent,
+    NotfoundComponent,
   ],
   imports: [
     BrowserModule,

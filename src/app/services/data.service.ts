@@ -9,4 +9,11 @@ export class DataService {
   constructor(private http: HttpClient) {}
 
   getAllProducts = () => this.http.get(`${apiUrl}/product`);
+
+  getSingleProduct = (id: string) => this.http.get(`${apiUrl}/product/${id}`);
+
+  placeBid = (id: any , currentBid:Object) => this.http.put(`${apiUrl}/autobid/direct/${id}`, {currentBid});
+
+  placeAutoBid = (id: any, user:Object) => this.http.put(`${apiUrl}/autobid/product/${id}`, user);
+
 }
