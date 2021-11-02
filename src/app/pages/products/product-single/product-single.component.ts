@@ -18,6 +18,7 @@ export class ProductSingleComponent implements OnInit {
   maxSeconds: number = 0;
 
   showAutoBidSuccess: boolean = false;
+  showAutoBidFail: boolean = false;
 
   showBidForm: boolean = false;
 
@@ -91,7 +92,11 @@ export class ProductSingleComponent implements OnInit {
       this.data.placeAutoBid(this.productId, {user : this.currentBid.user}).subscribe(
         (res: any) => {
           this.getSingleProduct(this.productId);
-          this.showAutoBidSuccess = true;
+          if(res.status === 'success') {
+            this.showAutoBidSuccess = true;
+          } else{
+            this.showAutoBidFail = true;
+          }
         }
         ,
         (err) => {

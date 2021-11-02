@@ -29,7 +29,7 @@
         </div>
       </div>
       <button class="btn btn-bid" *ngIf="!showBidForm && !productDetails.autoBidders.includes(currentBid.user) && productDetails.currentBid.user != currentBid.user"
-        (click)="showBidForm  = true">Place a Bid</button>
+        (click)="showBidForm  = true">Bid Now</button>
       <div *ngIf="showBidForm">
         <p class="mt-2" style="font-size:20px">Enter any bid amount from
           <b>{{productDetails.currentBid.amount + 1 |currency}} </b></p>
@@ -37,10 +37,13 @@
           placeholder="Enter your bid" style="width: 100%;" [(ngModel)]="currentBid.amount">
         <button class="btn btn-cancel mt-3" (click)="showBidForm  = false">Cancel</button>
         <button class="btn btn-cancel mt-3 mx-3" [disabled]="currentBid.amount <= productDetails.currentBid.amount"
-          (click)="placeBid()">Place Bid</button>
+          (click)="placeBid()">Bid Now</button>
       </div>
       <div class="mt-2 alert alert-info" role="alert" *ngIf="showAutoBidSuccess">
         You have successfully setup autobidding for this product, Make Sure your reserved amounts are up to date!
+      </div>
+      <div class="mt-2 alert alert-danger" role="alert" *ngIf="showAutoBidFail">
+        To Setup Auto Bidding, You need to first reserve amounts. Please <a routerLink="/autobid">Click here </a>to configure your autobidding settings.
       </div>
       <div class="mt-2 alert alert-info" role="alert" *ngIf="productDetails.autoBidders.includes(currentBid.user)">
         Autobidding is set for this product!
