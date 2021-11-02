@@ -9,7 +9,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class ProductListComponent implements OnInit {
   allProducts: any = [];
-  totalProducts: number = 0;
+  allProductsTemp: any = [];
+  allCategories: any = []
 
   constructor(private data: DataService, private spinner: NgxSpinnerService) {}
 
@@ -22,7 +23,12 @@ export class ProductListComponent implements OnInit {
     this.data.getAllProducts().subscribe(
       (data: any) => {
         this.allProducts = data.content;
-        this.totalProducts = data.total;
+        this.allProductsTemp = JSON.parse(JSON.stringify(data.content));  // deep copy
+
+        this.allCategories = this.allProductsTemp.map((product: any) => {
+          return product.category;
+        });
+        this.allCategories = [...new Set(this.allCategories)];
         this.spinner.hide();
       },
       (error) => {
@@ -33,20 +39,22 @@ export class ProductListComponent implements OnInit {
   }
 
   orderProductsByFilter(filter: any): void {
+    this.allProductsTemp.length = 0;
+    this.allProductsTemp = JSON.parse(JSON.stringify(this.allProducts));
     // this function can reside in the backend if you want
     if(filter){
       filter = filter.value
     }
     if (filter === 'asc') {
-      this.allProducts.sort((a: any, b: any) => {
+      this.allProductsTemp.sort((a: any, b: any) => {
         return a.currentBid.amount - b.currentBid.amount;
       });
     } else if (filter === 'desc') {
-      this.allProducts.sort((a: any, b: any) => {
+      this.allProductsTemp.sort((a: any, b: any) => {
         return b.currentBid.amount - a.currentBid.amount;
       });
     } else if (filter === 'name') {
-      this.allProducts.sort((a: any, b: any) => {
+      this.allProductsTemp.sort((a: any, b: any) => {
         if (a.title < b.title) {
           return -1;
         }
@@ -54,6 +62,20 @@ export class ProductListComponent implements OnInit {
           return 1;
         }
         return 0;
+      });
+    }
+  }
+
+  orferProductsByCategory(category: any): void {    this.allProductsTemp.length = 0;
+    this.allProductsTemp = JSON.parse(JSON.stringify(this.allProducts));
+    if(category){
+      category = category.value
+    }
+    if (category === 'all') {
+      this.getAllProducts();
+    } else {
+      this.allProductsTemp = this.allProductsTemp.filter((product: any) => {
+        return product.category === category;
       });
     }
   }
