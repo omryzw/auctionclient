@@ -43,7 +43,7 @@
       </div>
       <!-- checkbox -->
       <div class="form-check mt-5" *ngIf="!productDetails.autoBidders.includes(currentBid.user)">
-        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" (change)="activateAutoBid($event)">
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" (change)="activateAutoBid($event) " style="color: #030234;">
         <label class="form-check-label" for="defaultCheck1">
           Activate Auto Bidding
         </label>
