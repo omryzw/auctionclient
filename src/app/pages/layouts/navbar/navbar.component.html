@@ -10,13 +10,15 @@
           <a href="#" class="nav-link text-white">Home</a>
         </li>
         <li class="nav-item dropdown">
+          <span class="badge badge-pill badge-primary"
+            style="float:right;margin-bottom:-10px;">{{totalNotifications}}</span>
           <a href="#" class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown">Notifications</a>
           <div class="dropdown-menu">
-            <a href="#" class="dropdown-item">Inbox</a>
-            <a href="#" class="dropdown-item">Drafts</a>
-            <a href="#" class="dropdown-item">Sent Items</a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">Trash</a>
+            <div *ngFor="let msg of allNotifications">
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">{{msg.message}}  <span style="color: #ffffff;" class="checkmark">&#10004;</span></a>
+              
+            </div>
           </div>
         </li>
         <li class="nav-item">

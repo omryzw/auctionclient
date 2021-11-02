@@ -18,4 +18,6 @@ export class DataService {
 
   setupAutoBid = (user:Object) => this.http.post(`${apiUrl}/autobid`, user);  
 
+  getAllUserNotifications = (user: string) => this.http.get(`${apiUrl}/notify?user=${user}`);
+
 }
