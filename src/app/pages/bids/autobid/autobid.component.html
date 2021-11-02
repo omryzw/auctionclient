@@ -1,1 +1,31 @@
-<p>autobid works!</p>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-newton-cradle" [fullScreen]="true">
+  <p style="color: white">Loading...</p>
+</ngx-spinner>
+<div class="container">
+  <div class="row mt-5 outer-row">
+    <h6>SETTINGS</h6>
+    <h1 style="font-size:45px; color: #030234;font-weight: 600;">Configure The Auto-Bidding</h1>
+    <div class="alert alert-success mt-5" role="alert" *ngIf="isSetup">
+      <b>You have successfully Setup Auto-Bidding.</b>
+    </div>
+    <div class="amount mb-5 mt-4">
+      <h4>Maximum bid amount ($)</h4>
+      <p>This maximum amount This maximum amount will be split between all items where you have activated auto-bidding!
+      </p>
+      <div class="form-group">
+        <input type="number" class="form-control config-text" placeholder="$" [(ngModel)]="config.alertTrigger">
+      </div>
+    </div>
+    <div class="notification mb-5">
+      <h4>Bid Alert Notification (%)</h4>
+      <p>Get the notification About Your Reserved Bids</p>
+      <div class="form-group ">
+        <input type="number" class="form-control config-text" placeholder="%" [(ngModel)]="config.maxAmount">
+      </div>
+    </div>
+    <div class="form-group mb-4">
+      <button type="submit" class="btn btn-primary btn-bid"
+        [disabled]="config.maxAmount == 0 || config.alertTrigger == 0" (click)="setupAutoBid()">Save</button>
+    </div>
+  </div>
+</div>

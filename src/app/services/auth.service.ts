@@ -12,7 +12,6 @@ export class AuthService {
     const userFound = Users.find(
       (x: any) => x.email == user.email && x.password == user.password
     );
-    console.log(userFound);
     if (userFound) {
       this.loggedIn.next(true);
       localStorage.setItem('username', userFound.username);

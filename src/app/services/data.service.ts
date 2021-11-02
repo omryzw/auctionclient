@@ -16,4 +16,6 @@ export class DataService {
 
   placeAutoBid = (id: any, user:Object) => this.http.put(`${apiUrl}/autobid/product/${id}`, user);
 
+  setupAutoBid = (user:Object) => this.http.post(`${apiUrl}/autobid`, user);  
+
 }
