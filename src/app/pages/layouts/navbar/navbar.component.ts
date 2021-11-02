@@ -12,7 +12,8 @@ export class NavbarComponent implements OnInit {
   totalNotifications = 0;
   lastCount = 0;
 
-  constructor(private data: DataService, private toastr: ToastrService) {}
+  constructor(private data: DataService, private toastr: ToastrService) {
+  }
 
   ngOnInit(): void {
     this.initializeNotificationCount();
