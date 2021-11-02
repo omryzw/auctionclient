@@ -22,4 +22,6 @@ export class DataService {
 
   changeProductStatus = (id: string) => this.http.put(`${apiUrl}/product/${id}`, {});
 
+  getBidsWon = (user: string) => this.http.get(`${apiUrl}/autobid/won?user=${user}`);
+
 }

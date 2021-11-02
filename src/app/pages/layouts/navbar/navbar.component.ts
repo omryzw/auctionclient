@@ -12,11 +12,13 @@ export class NavbarComponent implements OnInit {
   totalNotifications = 0;
   lastCount = 0;
   fullName = localStorage.getItem('name');
+  allBidsWon: any =[]
 
   constructor(private data: DataService, private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
+    this.getBidsWon();
     this.initializeNotificationCount();
     setInterval(() => {
       this.getAllUserNotifications();
@@ -52,6 +54,19 @@ export class NavbarComponent implements OnInit {
       );
     }
   }
+
+  getBidsWon(): void {
+    this.data.getBidsWon(this.user).subscribe(
+      (res: any) => {
+        this.allBidsWon = res.content;
+      },
+      (err) => {
+        alert('Data Fetch Error: Bids');
+      }
+    );
+  }
+
+
 
   showNotification(count: any) {
     this.lastCount = count;
