@@ -1,0 +1,74 @@
+<app-navbar></app-navbar>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-newton-cradle" [fullScreen]="true">
+  <p style="color: white">Loading...</p>
+</ngx-spinner>
+
+
+<div class="container pt-5">
+  <div class="row">
+    <div class="col-md-8 order-md-2 col-lg-9">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-6 col-md-6 col-lg-4 mb-3" class="col" *ngFor="let product of allProductsTemp">
+            <div class="card mb-4" style="width: 18rem;">
+              <img class="card-img-top" [src]="product.photoUrl" alt="{{product.title}}" style="height: 13rem;">
+              <div class="card-body">
+                <h5 class="card-title">{{product.title}}</h5>
+                <p class="card-text">{{product.description || 'Description By Pictures'}}</p>
+                <p class="card-text-2">Current Bid : <b>{{product.currentBid.amount || 0 | currency}}</b></p>
+                <button class="btn btn-bid" routerLink="/product/{{product._id}}">Place Bid</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 order-md-1 col-lg-3 sidebar-filter">
+      <h3 class="mt-0 mb-5">Showing <span class="text-primary">{{allProductsTemp.length}}</span> Products</h3>
+      <h6 class="text-uppercase font-weight-bold mb-3">Categories</h6>
+      <div class="mt-2 mb-2 pl-2">
+        <div class="custom-control custom-checkbox">
+          <input type="radio" name="categoryfilter" value="all" class="custom-control-input" id="category-1"
+            (change)="orferProductsByCategory($event.target)">
+          <label class="custom-control-label ms-2" for="category-1">All</label>
+        </div>
+        <div class="custom-control custom-checkbox" *ngFor="let cat of allCategories">
+          <input type="radio" name="categoryfilter" value={{cat}} class="custom-control-input" id="category-1"
+            (change)="orferProductsByCategory($event.target)">
+          <label class="custom-control-label ms-2" for="category-1">{{cat}}</label>
+        </div>
+      </div>
+      <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>
+      <h6 class="text-uppercase mt-5 mb-3 font-weight-bold">Filter By</h6>
+      <div class="mt-2 mb-2 pl-2">
+        <div class="custom-control custom-checkbox">
+          <input type="radio" name="filterby" class="gap-3 custom-control-input" id="filter-size-1" value="name"
+            (change)="orderProductsByFilter($event.target)">
+          <label class="custom-control-label ms-2" for="filter-size-1"> Name (A-Z)</label>
+        </div>
+      </div>
+      <div class="mt-2 mb-2 pl-2">
+        <div class="custom-control custom-checkbox">
+          <input type="radio" name="filterby" class="gap-3 ustom-control-input mr-5" id="filter-size-2" value="asc"
+            (change)="orderProductsByFilter($event.target)">
+          <label class="custom-control-label ms-2" for="filter-size-2"> Lowest to Highest Bid</label>
+        </div>
+      </div>
+      <div class="mt-2 mb-2 pl-2">
+        <div class="custom-control custom-checkbox">
+          <input type="radio" name="filterby" class="gap-3 custom-control-input" id="filter-size-3" value="desc"
+            (change)="orderProductsByFilter($event.target)">
+          <label class="custom-control-label ms-2" for="filter-size-3"> Highest to Lowest Bid</label>
+        </div>
+      </div>
+      <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>
+      <h6 class="text-uppercase mt-5 mb-3 font-weight-bold">Maximum Bid Price ($)</h6>
+      <div class="price-filter-control">
+        <input type="range" class="form-range" value="1" min="1" max="{{maximumPrice}}" oninput="this.nextElementSibling.value = this.value" (change)="sortByBidPrice($event.target)">
+        <output class="ms-2">1</output>
+      </div>
+      <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-sm navbar-light ">
+  <div class="container-fluid">
+    <a href="#" class="navbar-brand text-white">
+
+      <img src="../../../../assets/auction.png" alt="logo" class="img-fluid" style="width:35px">
+    </a>
+    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navbarCollapse" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="nav-item">
+          <a routerLink="/" class="nav-link text-white">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <span class="badge badge-pill text-danger"
+            style="float:right;margin-bottom:-10px;">{{totalNotifications}}</span>
+          <a href="#" class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown">Notifications</a>
+          <div class="dropdown-menu">
+            <a *ngIf="allNotifications.length === 0" class="dropdown-item">No Notifications Yet</a>
+            <div *ngFor="let msg of allNotifications">
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">{{msg.message}}</a>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown">My Past Wins</a>
+          <div class="dropdown-menu">
+          <a *ngIf="allBidsWon.length === 0" class="dropdown-item">No Bids Won Yet</a>
+            <div *ngFor="let bid of allBidsWon">
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item">{{bid.title}} on {{bid.endDate| date}} for
+                {{bid.currentBid.amount | currency}}</a>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/autobid" class="nav-link text-white">Configure Auto Bidding</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown">{{fullName | titlecase}}</a>
+          <div class="dropdown-menu dropdown-menu-end">
+            <a routerLink="/autobid" class="dropdown-item">Configure Auto Bidding</a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item" (click)="logout()">Logout</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

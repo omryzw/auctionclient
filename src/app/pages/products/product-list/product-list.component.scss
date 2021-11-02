@@ -1,0 +1,65 @@
+.product {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    height: 250px;
+    width: 250px;
+    margin-right: 10px;
+
+}
+
+.btn-bid{
+    background: #04034d;
+    display: block;
+    color:#fff;
+width: 100%;
+box-shadow: none;
+border-radius: 0;
+border-color: #030234;
+text-align: center;
+white-space: nowrap;
+overflow: visible;
+
+
+
+}
+
+h5 {
+    font-size: 19px;
+}
+p {
+    font-size: 15px;
+}
+
+.card-text-2 {
+    font-size: 12px; color: #999999;
+}
+
+nav {
+    background: #ffffff;
+    height: 100%;
+    width: 250px;
+
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+
+
+                color: #2D2E2E;
+                padding: 20px;
+                display: block;
+                text-decoration: none;
+
+
+            .activated {
+                background-color: #00a8ff;
+            }
+        }
+    }
+    
+}
+

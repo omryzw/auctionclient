@@ -1,0 +1,28 @@
+nav {
+    background: #ffffff;
+    height: 100%;
+    width: 250px;
+
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+
+
+                color: #2D2E2E;
+                padding: 20px;
+                display: block;
+                text-decoration: none;
+
+
+            .activated {
+                background-color: #00a8ff;
+            }
+        }
+    }
+    
+}
+

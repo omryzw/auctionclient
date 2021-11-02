@@ -1,0 +1,30 @@
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+
+.h-custom {
+  height: calc(100% - 73px);
+}
+
+@media (max-width: 450px) {
+  .h-custom {
+    height: 100%;
+  }
+}
+
+.btn-login {
+  background: #04034d;
+  display: block;
+  color: #fff;
+  width: 100%;
+  box-shadow: none;
+  border-radius: 0;
+  border-color: #030234;
+  text-align: center;
+  white-space: nowrap;
+  overflow: visible;
+}
