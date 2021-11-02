@@ -67,7 +67,6 @@ export class ProductSingleComponent implements OnInit {
         }
         ,
         (err) => {
-          console.log(err.error.message);
           this.showAutoBidSuccess = false;
           alert('Data Fetch Error, Reload');
         }

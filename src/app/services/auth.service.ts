@@ -23,7 +23,6 @@ export class AuthService {
   };
 
   isLoggedin(): boolean {
-    // check if a username is set in local storage
     if (localStorage.getItem('username')) {
       return true;
     }
@@ -31,6 +30,5 @@ export class AuthService {
   }
 
   constructor() {
-    console.log(Users);
   }
 }
