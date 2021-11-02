@@ -9,6 +9,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class ProductListComponent implements OnInit {
   allProducts: any = [];
+  totalProducts: number = 0;
 
   constructor(private data: DataService, private spinner: NgxSpinnerService) {}
 
@@ -21,6 +22,7 @@ export class ProductListComponent implements OnInit {
     this.data.getAllProducts().subscribe(
       (data: any) => {
         this.allProducts = data.content;
+        this.totalProducts = data.total;
         this.spinner.hide();
       },
       (error) => {

@@ -2,64 +2,98 @@
 <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-newton-cradle" [fullScreen]="true">
   <p style="color: white">Loading...</p>
 </ngx-spinner>
-<div id="container">
-  <nav>
-    <ul>
-      <li>
-        Filters
-      </li>
-      <li>
-        <p>Arrange</p>
-        <div class="form-group">
-          <select class="form-select" id="exampleFormControlSelkect1" (change)="orderProductsByFilter($event.target)">
-            <option value="name">By Name</option>
-            <option value="desc">Highest to Lowest Bid</option>
-            <option value="asc">Lowest to Highest Bid</option>
-          </select>
-        </div>
-      </li>
-      <li>
-        <p>
-          <label for="volume">Minimum Bid</label>
-          <input type="range" id="volume" name="volume" min="0" max="11">
-        </p>
-      </li>
-    </ul>
-    <ul>
-      <li>
-        Categories
-      </li>
-      <li>
-        Category 1
-      </li>
-      <li>
-        Category 2
-      </li>
-      <li>
-        Category 3
-      </li>
-      <li>
-        Category 4
-      </li>
-      <li>
-        Category 5
-      </li>
-    </ul>
-  </nav>
-  <div id="content">
-    <div class=" row g-3 offset-1">
-      <div class="col" *ngFor="let product of allProducts">
-        <div class="card " style="width: 18rem;">
-          <img class="card-img-top" [src]="product.photoUrl" alt="Card image cap" style="height: 13rem;">
-          <div class="card-body">
-            <h5 class="card-title">{{product.title}}</h5>
-            <p class="card-text">{{product.description || 'Description By Pictures'}}</p>
-            <p class="card-text-2">Current Bid : <b>{{product.currentBid.amount || 0 | currency}}</b></p>
-            <button class="btn btn-bid" routerLink="/product/{{product._id}}">Place Bid</button>
+
+
+<div class="container pt-5">
+  <div class="row" >
+    <div class="col-md-8 order-md-2 col-lg-9" >
+      <div class="container-fluid">
+        <div class="row" >
+          <div class="col-6 col-md-6 col-lg-4 mb-3" class="col"*ngFor="let product of allProducts" >
+            <div class="card mb-4" style="width: 18rem;">
+              <img class="card-img-top" [src]="product.photoUrl" alt="Card image cap" style="height: 13rem;">
+              <div class="card-body">
+                <h5 class="card-title">{{product.title}}</h5>
+                <p class="card-text">{{product.description || 'Description By Pictures'}}</p>
+                <p class="card-text-2">Current Bid : <b>{{product.currentBid.amount || 0 | currency}}</b></p>
+                <button class="btn btn-bid" routerLink="/product/{{product._id}}">Place Bid</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+    <div class="col-md-4 order-md-1 col-lg-3 sidebar-filter">
+      <h3 class="mt-0 mb-5">Showing <span class="text-primary">{{totalProducts}}</span> Products</h3>
+      <h6 class="text-uppercase font-weight-bold mb-3">Categories</h6>
+      <div class="mt-2 mb-2 pl-2">
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="category-1">
+          <label class="custom-control-label" for="category-1">Accessories</label>
+        </div>
+      </div>
+      <div class="mt-2 mb-2 pl-2">
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="category-2">
+          <label class="custom-control-label" for="category-2">Coats &amp; Jackets</label>
+        </div>
+      </div>
+      <div class="mt-2 mb-2 pl-2">
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="category-3">
+          <label class="custom-control-label" for="category-3">Hoodies &amp; Sweatshirts</label>
+        </div>
+      </div>
+      <div class="mt-2 mb-2 pl-2">
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="category-4">
+          <label class="custom-control-label" for="category-4">Jeans</label>
+        </div>
+      </div>
+      <div class="mt-2 mb-2 pl-2">
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="category-5">
+          <label class="custom-control-label" for="category-5">Shirts</label>
+        </div>
+      </div>
+      <div class="mt-2 mb-2 pl-2">
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="category-6">
+          <label class="custom-control-label" for="category-6">Underwear</label>
+        </div>
+      </div>
+      <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>
+      <h6 class="text-uppercase mt-5 mb-3 font-weight-bold">Filter By</h6>
+      <div class="mt-2 mb-2 pl-2">
+        <div class="custom-control custom-checkbox">
+          <input type="radio" name="filterby"  class="gap-3 custom-control-input" id="filter-size-1" value="name" (change)="orderProductsByFilter($event.target)">
+          <label class="custom-control-label" for="filter-size-1"> Name</label>
+        </div>
+      </div>
+      <div class="mt-2 mb-2 pl-2">
+        <div class="custom-control custom-checkbox">
+          <input type="radio"  name="filterby" class="gap-3 ustom-control-input mr-5" id="filter-size-2" value="asc" (change)="orderProductsByFilter($event.target)">
+          <label class="custom-control-label " for="filter-size-2"> Lowest to Highest Bid</label>
+        </div>
+      </div>
+      <div class="mt-2 mb-2 pl-2">
+        <div class="custom-control custom-checkbox">
+          <input type="radio" name="filterby"  class="gap-3 custom-control-input" id="filter-size-3" value="desc" (change)="orderProductsByFilter($event.target)">
+          <label class="custom-control-label" for="filter-size-3"> Highest to Lowest Bid</label>
+        </div>
+      </div>
+   
+      <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>
+      <h6 class="text-uppercase mt-5 mb-3 font-weight-bold">Price</h6>
+      <div class="price-filter-control">
+        <input type="number" class="form-control w-50 pull-left mb-2" value="50" id="price-min-control">
+        <input type="number" class="form-control w-50 pull-right" value="150" id="price-max-control">
+      </div>
+      <input id="ex2" type="text" class="slider " value="50,150" data-slider-min="10" data-slider-max="200"
+        data-slider-step="5" data-slider-value="[50,150]" data-value="50,150" style="display: none;">
+      <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>
+      <a href="#" class="btn btn-lg btn-block btn-primary mt-5">Update Results</a>
+    </div>
 
+  </div>
 </div>
