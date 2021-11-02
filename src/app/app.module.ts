@@ -14,6 +14,7 @@ import { ProductSingleComponent } from './pages/products/product-single/product-
 import { AutobidComponent } from './pages/bids/autobid/autobid.component';
 import { LoginComponent } from './pages/layouts/login/login.component';
 import { NotfoundComponent } from './pages/layouts/notfound/notfound.component';
+import { NavbarComponent } from './pages/layouts/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { NotfoundComponent } from './pages/layouts/notfound/notfound.component';
     AutobidComponent,
     LoginComponent,
     NotfoundComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
