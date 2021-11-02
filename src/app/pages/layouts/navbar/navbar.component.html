@@ -13,7 +13,7 @@
           <a routerLink="/" class="nav-link text-white">Home</a>
         </li>
         <li class="nav-item dropdown">
-          <span class="badge badge-pill badge-primary"
+          <span class="badge badge-pill text-danger"
             style="float:right;margin-bottom:-10px;">{{totalNotifications}}</span>
           <a href="#" class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown">Notifications</a>
           <div class="dropdown-menu">
@@ -28,7 +28,7 @@
           <div class="dropdown-menu">
             <div *ngFor="let bid of allBidsWon">
               <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">{{bid.title}} on {{bid.endDate| date}} for {{bid.currentBid.amount | currency}}</a>
+              <a  class="dropdown-item">{{bid.title}} on {{bid.endDate| date}} for {{bid.currentBid.amount | currency}}</a>
             </div>
           </div>
         </li>
