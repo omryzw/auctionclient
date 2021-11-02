@@ -11,6 +11,7 @@ export class NavbarComponent implements OnInit {
   allNotifications: any = [];
   totalNotifications = 0;
   lastCount = 0;
+  fullName = localStorage.getItem('name');
 
   constructor(private data: DataService, private toastr: ToastrService) {
   }
@@ -55,5 +56,9 @@ export class NavbarComponent implements OnInit {
   showNotification(count: any) {
     this.lastCount = count;
     this.toastr.info('Bid Notification', 'You have a new notification');
+  }
+
+  logout(): void {
+    localStorage.clear();
   }
 }

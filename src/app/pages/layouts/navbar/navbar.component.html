@@ -7,7 +7,7 @@
     <div id="navbarCollapse" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li class="nav-item">
-          <a href="#" class="nav-link text-white">Home</a>
+          <a routerLink="/" class="nav-link text-white">Home</a>
         </li>
         <li class="nav-item dropdown">
           <span class="badge badge-pill badge-primary"
@@ -16,23 +16,21 @@
           <div class="dropdown-menu">
             <div *ngFor="let msg of allNotifications">
               <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">{{msg.message}}  <span style="color: #ffffff;" class="checkmark">&#10004;</span></a>
-              
+              <a href="#" class="dropdown-item">{{msg.message}}</a>
             </div>
           </div>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link text-white">Configure Auto Bidding</a>
+          <a routerLink="/autobid" class="nav-link text-white">Configure Auto Bidding</a>
         </li>
       </ul>
       <ul class="nav navbar-nav ms-auto">
         <li class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown">Admin</a>
+          <a href="#" class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown">{{fullName | titlecase}}</a>
           <div class="dropdown-menu dropdown-menu-end">
-            <a href="#" class="dropdown-item ">Reports</a>
-            <a href="#" class="dropdown-item">Settings</a>
+            <a routerLink="/autobid" class="dropdown-item">Configure Auto Bidding</a>
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">Logout</a>
+            <a href="#" class="dropdown-item" (click)="logout()">Logout</a>
           </div>
         </li>
       </ul>
