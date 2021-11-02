@@ -15,7 +15,7 @@ import { AutobidComponent } from './pages/bids/autobid/autobid.component';
 import { LoginComponent } from './pages/layouts/login/login.component';
 import { NotfoundComponent } from './pages/layouts/notfound/notfound.component';
 import { NavbarComponent } from './pages/layouts/navbar/navbar.component';
-
+import { CdTimerModule } from 'angular-cd-timer';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +35,7 @@ import { NavbarComponent } from './pages/layouts/navbar/navbar.component';
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    CdTimerModule,
     FormsModule,
     ReactiveFormsModule,
   ],

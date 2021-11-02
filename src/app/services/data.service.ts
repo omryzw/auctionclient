@@ -20,4 +20,6 @@ export class DataService {
 
   getAllUserNotifications = (user: string) => this.http.get(`${apiUrl}/notify?user=${user}`);
 
+  changeProductStatus = (id: string) => this.http.put(`${apiUrl}/product/${id}`, {});
+
 }

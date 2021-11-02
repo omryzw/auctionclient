@@ -1,6 +1,6 @@
 import { DataService } from './../../../services/data.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
@@ -15,12 +15,13 @@ export class ProductSingleComponent implements OnInit {
     user: localStorage.getItem('username'),
     amount: 0,
   }
+  maxSeconds: number = 0;
 
   showAutoBidSuccess: boolean = false;
 
   showBidForm: boolean = false;
 
-  constructor(private data: DataService, private spinner: NgxSpinnerService,private route: ActivatedRoute,) {}
+  constructor(private data: DataService, private spinner: NgxSpinnerService,private route: ActivatedRoute,private router: Router) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -29,11 +30,23 @@ export class ProductSingleComponent implements OnInit {
     });
   }
 
+  // calculate seconds left given end date , hours , minutes and seconds
+  calculateSecondsLeft(endDate: string): number {
+    const endDateTime = new Date(endDate);
+    const currentDateTime = new Date();
+    const diff = endDateTime.getTime() - currentDateTime.getTime();
+    const secondsLeft = Math.floor(diff / 1000);
+    return secondsLeft;
+  }
+
+
   getSingleProduct(id: string):void {
+    this.maxSeconds = 0
     this.spinner.show();
     this.data.getSingleProduct(id).subscribe(
       (res: any) => {
         this.productDetails = res.content;
+        this.maxSeconds = this.calculateSecondsLeft(this.productDetails.endDate);
         this.spinner.hide();
       },
       (err) => {
@@ -53,6 +66,21 @@ export class ProductSingleComponent implements OnInit {
       (err) => {
         this.spinner.hide();
         console.log(err.error.message);
+        alert('Data Fetch Error, Reload');
+      }
+    );
+  }
+
+  changeProductStatus():void {
+    this.spinner.show();
+    this.data.changeProductStatus(this.productId).subscribe(
+      (res: any) => {
+        this.spinner.hide();
+        alert('Bidding for product has ended');
+        this.router.navigate(['/']);
+      },
+      (err) => {
+        this.spinner.hide();
         alert('Data Fetch Error, Reload');
       }
     );

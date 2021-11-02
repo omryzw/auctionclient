@@ -25,10 +25,10 @@
         </div>
         <div class="col mb-5">
           <h1 style="font-size:20px" class="mb-4">Available Until</h1>
-          <h6 style="font-size:20px" class="mb-5">Ends {{productDetails.endDate | date: 'medium'}}</h6>
+          <cd-timer format="default" style="font-size:20px"  class="text-primary mb-5" (onComplete)="changeProductStatus()" [startTime]="maxSeconds" [endTime]="0"  [countdown]=true></cd-timer> 
         </div>
       </div>
-      <button class="btn btn-bid" *ngIf="!showBidForm && !productDetails.autoBidders.includes(currentBid.user)"
+      <button class="btn btn-bid" *ngIf="!showBidForm && !productDetails.autoBidders.includes(currentBid.user) && productDetails.currentBid.user != currentBid.user"
         (click)="showBidForm  = true">Place a Bid</button>
       <div *ngIf="showBidForm">
         <p class="mt-2" style="font-size:20px">Enter any bid amount from
