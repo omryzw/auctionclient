@@ -1,6 +1,8 @@
+import { Router } from '@angular/router';
 import { DataService } from './../../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -14,7 +16,7 @@ export class NavbarComponent implements OnInit {
   fullName = localStorage.getItem('name');
   allBidsWon: any =[]
 
-  constructor(private data: DataService, private toastr: ToastrService) {
+  constructor(private data: DataService, private toastr: ToastrService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -75,5 +77,6 @@ export class NavbarComponent implements OnInit {
 
   logout(): void {
     localStorage.clear();
+    this.router.navigate(['/login']);
   }
 }
