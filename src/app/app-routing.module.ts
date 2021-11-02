@@ -12,6 +12,7 @@ const routes: Routes = [
   {
     path: '',
     component: ProductListComponent,
+    data: {title: 'Home | All Bid Items'},
     canActivate: [IsloggedGuard],
     canLoad:[IsloggedGuard]
 
@@ -19,22 +20,27 @@ const routes: Routes = [
   {
     path: 'product/:id',
     component: ProductSingleComponent,
+    data: {title: 'Bid On Product'},
     canActivate: [IsloggedGuard],
     canLoad:[IsloggedGuard]
   },
   {
     path: 'autobid',
     component: AutobidComponent,
+    data: {title: 'Configure Autobidding'},
     canActivate: [IsloggedGuard],
     canLoad:[IsloggedGuard]
   },
   {
     path: 'login',
     component: LoginComponent,
+    data: {title: 'Login | Auction Site'},
+
   },
   {
     path: '**',
-    component: NotfoundComponent
+    component: NotfoundComponent,
+    data: {title: 'Page Not Found'},
   }
 ];
 
