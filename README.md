@@ -6,11 +6,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 1. Clone The Repository using the command `git clone https://github.com/omryzw/auctionclient`
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+2. Run command `npm install`
 
-## Code scaffolding
+3. Run `ng serve`. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
