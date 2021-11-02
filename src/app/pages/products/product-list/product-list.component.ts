@@ -10,7 +10,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class ProductListComponent implements OnInit {
   allProducts: any = [];
   allProductsTemp: any = [];
-  allCategories: any = []
+  allCategories: any = [];
+  maximumPrice: number = 0;
 
   constructor(private data: DataService, private spinner: NgxSpinnerService) {}
 
@@ -23,12 +24,17 @@ export class ProductListComponent implements OnInit {
     this.data.getAllProducts().subscribe(
       (data: any) => {
         this.allProducts = data.content;
-        this.allProductsTemp = JSON.parse(JSON.stringify(data.content));  // deep copy
-
+        this.allProductsTemp = JSON.parse(JSON.stringify(data.content));  
         this.allCategories = this.allProductsTemp.map((product: any) => {
           return product.category;
         });
         this.allCategories = [...new Set(this.allCategories)];
+        this.maximumPrice = Math.max.apply(
+          Math,
+          this.allProductsTemp.map((product: any) => {
+            return product.currentBid.amount;
+          })
+        );
         this.spinner.hide();
       },
       (error) => {
@@ -78,5 +84,14 @@ export class ProductListComponent implements OnInit {
         return product.category === category;
       });
     }
+  }
+
+  sortByBidPrice(event: any): void {
+    this.allProductsTemp.length = 0;
+    this.allProductsTemp = JSON.parse(JSON.stringify(this.allProducts));
+    this.allProductsTemp = this.allProductsTemp.filter((product: any) => {
+      return product.currentBid.amount <= event.value;
+    }
+    );
   }
 }
